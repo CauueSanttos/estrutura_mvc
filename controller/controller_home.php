@@ -12,6 +12,7 @@ class ControllerHome extends ControllerPadrao{
             'iIdade' => '19'
         );
 
+        $this->getInstanceTemplate('home', $aDados);
         $this->getInstanceTela('home', $aDados);
     }
 }

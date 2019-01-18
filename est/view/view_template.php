@@ -5,7 +5,8 @@
         <title>Início</title>
     </head>
     <body>
-        <h2>Início</h2>
+        <h2>Início - <?= $sNome ?></h2>
         <hr>
+        
     </body>
 </html>

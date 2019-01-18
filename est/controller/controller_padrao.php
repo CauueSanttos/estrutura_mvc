@@ -11,6 +11,7 @@ class ControllerPadrao {
      */
     public function montaTela(){
         $this->getInstanceTela('home');
+        $this->getInstanceTemplate('home');
     }
 
     /**
@@ -20,6 +21,10 @@ class ControllerPadrao {
      */
     public function getInstanceTela($sNomeView, $aParametrosView = Array()){
         Factory::loadView($sNomeView, $aParametrosView);
+    }
+
+    public function getInstanceTemplate($sNomeTemplate, $aArguments = Array()){
+        Factory::loadTemplate($sNomeTemplate, $aArguments);
     }
     
 }

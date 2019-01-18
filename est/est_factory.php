@@ -6,8 +6,9 @@
  */
 class Factory {
 
-    const View  = 'view',
-          Model = 'model';
+    const View     = 'view',
+          Template = 'template',
+          Model    = 'model';
 
     /**
      * Utilizado para carregar o arquivo na aplicação.
@@ -23,6 +24,9 @@ class Factory {
         switch ($sLoad) {
             case self::View:
                 require "view/view_{$sClassName}.php";
+                break;
+            case self::Template:
+                require "view/view_template.php";
                 break;
             case self::Model:
                 require "model/model_{$sClassName}.php";
@@ -41,6 +45,10 @@ class Factory {
      */
     static function loadView($sViewName, $aArguments = array()){
         return self::load($sViewName, self::View, $aArguments);
+    }
+
+    static function loadTemplate($sViewName, $aArguments = array()){
+        return self::load($sViewName, self::Template, $aArguments);
     }
 
     /**
