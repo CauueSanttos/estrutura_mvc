@@ -6,12 +6,49 @@
  */
 class Factory {
 
-    static function load($sViewName, $aArguments = array()){
-        extract($aArguments);
-        require "view/view_{$sViewName}.php";
+    const View  = 'view',
+          Model = 'model';
+
+    /**
+     * Utilizado para carregar o arquivo na aplicação.
+     * @param String $sClassName - Nome da classe.
+     * @param String $sLoad - Indica qual pasta deve ser carregado.
+     * @param Array $aArguments -  Parâmetros à serem carregados na View.
+     */
+    static function load($sClassName, $sLoad, $aArguments = array()){
+        if(count($aArguments)){
+            extract($aArguments);
+        }
+
+        switch ($sLoad) {
+            case self::View:
+                require "view/view_{$sClassName}.php";
+                break;
+            case self::Model:
+                require "model/model_{$sClassName}.php";
+                break;
+            default:
+                require "{$sClassName}.php";
+        }
+        
     }
 
+    /**
+     * Carrega a view na aplicação.
+     * @param String $sViewName - Nome da View.
+     * @param Array $aArguments - Parâmetros à serem carregados na View.
+     * @return Factory
+     */
     static function loadView($sViewName, $aArguments = array()){
-        return self::load($sViewName, $aArguments);
+        return self::load($sViewName, self::View, $aArguments);
+    }
+
+    /**
+     * Carrega um modelo de dados na aplicação.
+     * @param String $sModel - Nome do Model.
+     * @return Factory
+     */
+    static function loadModel($sModel){
+        return self::load($sModel, self::Model);
     }
 }
