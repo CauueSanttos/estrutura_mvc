@@ -9,6 +9,7 @@ require './environment.php';
 require './est/est_conexao.php';
 
 if(ENVIRONMENT == 'development'){
+    define('BASE_URL', 'http://estrutura.mvc/');
     $bDevelopment = true;
 } else {
     $bDevelopment = false;

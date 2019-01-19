@@ -64,7 +64,7 @@ class Conexao{
             return pg_num_rows($oResultado);
         }
     }
-    
+
     /**
      * Retorna um objeto dinâmico para uso.
      * @param Object $oResultado
@@ -72,12 +72,14 @@ class Conexao{
      */
     public function getSqlFetchAssoc($oResultado){
         if(isset($oResultado)){
-            while($aDados[] = pg_fetch_assoc($oResultado)){ }
-            
-            return $aDados;
+            while($aDados[] = pg_fetch_assoc($oResultado)){
+                $aDadosSql = $aDados[0];
+            }
+
+            return $aDadosSql;
         }
     }
-    
+
     /**
      * Finaliza a conexão com o Banco de Dados.
      */

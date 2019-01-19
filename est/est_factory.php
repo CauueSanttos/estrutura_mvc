@@ -16,20 +16,23 @@ class Factory {
      * @param String $sLoad - Indica qual pasta deve ser carregado.
      * @param Array $aArguments -  Parâmetros à serem carregados na View.
      */
-    static function load($sClassName, $sLoad, $aArguments = array()){
+    static function load($sClassName, $sLoad, $aArguments = Array()){
         if(count($aArguments)){
             extract($aArguments);
         }
 
         switch ($sLoad) {
             case self::View:
-                require "view/view_{$sClassName}.php";
+                //Caminho dentro da pasta INCLUDE;
+                require "include/view/view_{$sClassName}.php";
                 break;
             case self::Template:
+                //Caminho dentro da pasta EST;
                 require "view/view_template.php";
                 break;
             case self::Model:
-                require "model/model_{$sClassName}.php";
+                //Caminho dentro da pasta INCLUDE;
+                require "include/model/model_{$sClassName}.php";
                 break;
             default:
                 require "{$sClassName}.php";
@@ -43,11 +46,11 @@ class Factory {
      * @param Array $aArguments - Parâmetros à serem carregados na View.
      * @return Factory
      */
-    static function loadView($sViewName, $aArguments = array()){
+    static function loadView($sViewName, $aArguments = Array()){
         return self::load($sViewName, self::View, $aArguments);
     }
 
-    static function loadTemplate($sViewName, $aArguments = array()){
+    static function loadTemplate($sViewName, $aArguments = Array()){
         return self::load($sViewName, self::Template, $aArguments);
     }
 
