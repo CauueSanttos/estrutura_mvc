@@ -32,7 +32,7 @@ class Factory {
                 break;
             case self::Model:
                 //Caminho dentro da pasta INCLUDE;
-                require "include/model/model_{$sClassName}.php";
+//                include("include/model/model_{$sClassName}.php");
                 break;
             default:
                 require "{$sClassName}.php";
@@ -50,6 +50,12 @@ class Factory {
         return self::load($sViewName, self::View, $aArguments);
     }
 
+    /**
+     * Carrega o Template da Aplicação
+     * @param String $sViewName
+     * @param Array $aArguments
+     * @return Factory
+     */
     static function loadTemplate($sViewName, $aArguments = Array()){
         return self::load($sViewName, self::Template, $aArguments);
     }
@@ -60,6 +66,7 @@ class Factory {
      * @return Factory
      */
     static function loadModel($sModel){
-        return self::load($sModel, self::Model);
+        $sModel = 'Model' . $sModel;
+        return new $sModel();
     }
 }

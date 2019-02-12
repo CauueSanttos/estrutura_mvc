@@ -19,7 +19,7 @@ spl_autoload_register(function ($sClass){
 
     if(file_exists("include/controller/{$sNomeController}.php")){
         require "include/controller/{$sNomeController}.php";
-    } else if (file_exists("model/{$sNomeModel}.php")){
+    } else if (file_exists("include/model/{$sNomeModel}.php")){
         require "include/model/{$sNomeModel}.php";
     } else if (file_exists("est/est_{$sClasse}.php")){
         require "est/est_{$sClasse}.php";

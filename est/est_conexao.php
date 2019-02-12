@@ -73,10 +73,10 @@ class Conexao{
     public function getSqlFetchAssoc($oResultado){
         if(isset($oResultado)){
             while($aDados[] = pg_fetch_assoc($oResultado)){
-                $aDadosSql = $aDados[0];
+//                $aDadosSql = $aDados[0];
             }
 
-            return $aDadosSql;
+            return $aDados;
         }
     }
 

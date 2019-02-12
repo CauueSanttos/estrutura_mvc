@@ -4,7 +4,7 @@
  * @author Cauê dos Santos Silva <cauedossantossilva@hotmail.com>
  * @since 03/01/2019
  */
-class ModelPadrao {
+abstract class ModelPadrao {
 
     /**
      * @var Conexao
@@ -23,5 +23,6 @@ class ModelPadrao {
     public function setConexao($conexao) {
         $this->conexao = $conexao;
     }
-    
+
+    abstract public function doInsere();
 }

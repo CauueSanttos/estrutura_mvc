@@ -6,10 +6,10 @@
  */
 
 require './environment.php';
-require './est/est_conexao.php';
+require './est/est_conexao_mysql.php';
 
 if(ENVIRONMENT == 'development'){
-    define('BASE_URL', 'http://estrutura.mvc/');
+    define('BASE_URL', 'http://tropical.v2/');
     $bDevelopment = true;
 } else {
     $bDevelopment = false;
@@ -18,8 +18,8 @@ if(ENVIRONMENT == 'development'){
 GLOBAL  $oConexao;
 
 try{
-    /* @var $oConexao Conexao */
-    $oConexao = new Conexao();
+    /* @var $oConexao ConexaoMySql */
+    $oConexao = new ConexaoMySql();
     $oConexao->conecta($bDevelopment);
 } catch (PDOException $ex) {
     echo $ex->getMessage();
